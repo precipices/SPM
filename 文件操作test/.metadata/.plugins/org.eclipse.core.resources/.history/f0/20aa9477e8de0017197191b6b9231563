@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	已通过文件:
+	<table>
+		<c:forEach var="item" items="${teacherMap}">
+		
+		
+		
+			<c:url var="del" value="/DeleteFileServlet">
+				<c:param name="filename" value="${filename}" />
+				<c:param name="filePath" value="${teacherName}${'/已通过/'}${filename}" />
+			</c:url>
+			<c:url var="down" value="/DownloadServlet">
+				<c:param name="filename" value="${filename}" />
+				<c:param name="filePath" value="${teacherName}${'/已通过/'}${filename}" />
+			</c:url>
+			<tr>
+				<td>${filename}</td>
+				<td><a href="${del}" target="_blank">删除</a></td>
+				<td><a href="${down}" target="_blank">下载</a></td>
+			</tr>
+		</c:forEach>
+	</table>
+</body>
+</html>

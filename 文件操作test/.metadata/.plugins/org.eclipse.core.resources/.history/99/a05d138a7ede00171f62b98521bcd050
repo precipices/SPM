@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>文件上传</title>
+</head>
+<body>
+	已通过文件:
+	<table>
+		<c:forEach var="filename" items="${teacherMap[teacherName][0]}">
+			<tr>
+				<td>${filename}</td>
+				<td><a href="${pageContext.request.contextPath}/DownloadServlet.java?filename=${filename}">删除</a></td>
+				<td><a href="#">下载</a></td>
+			</tr>
+		</c:forEach>
+	</table>
+	待审核文件:
+	<table>
+		<c:forEach var="filename" items="${teacherMap[teacherName][1]}">
+		<c:url var="url" value="servlet/DownloadServlet">
+		<c:param name="filename" value=""/>
+		</c:url>
+			<tr>
+				<td>${filename}</td>
+				<td><a href="${pageContext.request.contextPath}/DownloadServlet?filename=${filename}">删除</a></td>
+			</tr>
+		</c:forEach>
+	</table>
+	<table>
+		<form action="${pageContext.request.contextPath}/UploadServlet"	enctype="multipart/form-data" method="post">
+			<tr>
+				<td>上传文件：</td>
+				<td><input type="file" name="uploadFile" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="上传" /></td>
+				<td><input type="reset" value="重置" /></td>
+			</tr>
+		</form>
+	</table>
+</body>
+</html>

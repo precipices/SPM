@@ -1,0 +1,5 @@
+INDEX VERSION 1.126
+D:\文件操作test\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\302674011.index
+\FileTest\src
+D:\文件操作test\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1318017149.index
+\FileTest\src

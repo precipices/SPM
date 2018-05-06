@@ -1,0 +1,66 @@
+package test;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class ListFileServlet
+ */
+@WebServlet("/ListFileServlet")
+public class ListFileServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    public ListFileServlet() {
+        super();
+    }
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request,response);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		 * 1.上传的文件储存在WEB-INF/upload
+		 * 2.每个老师有一个以老师名字命名的文件夹
+		 * 3.老师名字文件夹下有两个目录:[已通过]和[待审核]
+		 * 4.[已通过]和[待审核]两个文件夹下储存着老师的文件,文件以上传时的原文件名命名
+		 */
+		//得到upload目录
+		File rootPath=new File(this.getServletContext().getRealPath("/WEB-INF/upload"));
+		//如果upload目录不存在,则创建
+		if(!rootPath.exists()) {
+			System.out.println("目录"+rootPath+"不存在,创建中...");
+			rootPath.mkdirs();
+		}
+		//得到老师名字文件夹列表
+		File[] teacherDirectoryList=rootPath.listFiles();
+		for(File teacherDirectory:teacherDirectoryList) {
+			//
+			File[] isCheckedDirectory=teacherDirectory.listFiles();
+			for(File isChecked:isCheckedDirectory) {
+				if(isChecked.getName().equals("已通过")){
+					
+				}else if(isChecked.getName().equals("待审核")){
+					
+				}else {
+					String message="不应该出现的错误:[已通过]和[待审核]以外的文件夹名!!";
+					request.setAttribute("message", message);
+					request.getRequestDispatcher("jspForUpload/message.jsp").forward(request, response);
+					return;
+				}
+			}
+			
+			
+		}
+		
+		//test
+//		String message="ListFileServlet Test!!";
+//		request.setAttribute("message", message);
+//		request.getRequestDispatcher("jspForUpload/message.jsp").forward(request, response);
+		
+	}
+
+}

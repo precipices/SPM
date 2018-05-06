@@ -1,0 +1,121 @@
+package test;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class ListFileServlet
+ */
+@WebServlet("/ListFileServlet")
+public class ListFileServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public ListFileServlet() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		/*
+		 * 这里需要使用session等得到用户类型 再将下面的userType改为"teacher","student"或"manager"
+		 */
+		String userType = "student";// 用户类型
+
+		/*
+		 * 文件结构介绍: 1.上传的文件储存在WEB-INF/upload 2.每个老师有一个以老师名字命名的文件夹
+		 * 3.老师名字文件夹下有两个目录:[已通过]和[待审核] 4.[已通过]和[待审核]两个文件夹下储存着老师的文件,文件以上传时的原文件名命名
+		 */
+		// 得到upload目录
+		File rootPath = new File(this.getServletContext().getRealPath("/WEB-INF/upload"));
+		// 如果upload目录不存在,则创建
+		if (!rootPath.exists()) {
+			System.out.println("目录" + rootPath + "不存在,创建中...");
+			rootPath.mkdirs();
+		}
+		// 创建key=teacherName,value=isCheckedDirectoryList的Map
+		Map teacherMap = new HashMap();
+		if(listFile(rootPath,teacherMap)==false) {
+			String message = "不应该出现的错误:teacher,student,manager以外的用户类型!!";
+			request.setAttribute("message", message);
+			request.getRequestDispatcher("jspForUpload/message.jsp").forward(request, response);
+			return;
+		}
+		request.setAttribute("teacherMap", teacherMap);
+		if ("teacher".equals(userType)) {
+			// 如果用户为老师,跳转到teacherShowFile.jsp显示该老师的文件
+			request.getRequestDispatcher("jspForUpload/teacherShowFile.jsp").forward(request, response);
+			return;
+		} else if ("student".equals(userType)) {
+			// 如果用户为学生,跳转到studentShowFile.jsp显示所有可下载的文件
+			request.getRequestDispatcher("jspForUpload/studentShowFile.jsp").forward(request, response);
+			return;
+		} else if ("manager".equals(userType)) {
+			// 如果用户为管理员,跳转到uploadAgree.jsp进行文件的处理工作
+			request.getRequestDispatcher("jspForUpload/uploadAgree.jsp").forward(request, response);
+			return;
+		} else {
+			String message = "不应该出现的错误:teacher,student,manager以外的用户类型!!";
+			request.setAttribute("message", message);
+			request.getRequestDispatcher("jspForUpload/message.jsp").forward(request, response);
+			return;
+		}
+	}
+
+	public boolean listFile(File rootPath, Map teacherMap) {
+		// 得到老师名字文件夹列表
+		File[] teacherDirectoryList = rootPath.listFiles();
+		// 遍历每个老师名字文件夹
+		for (File teacherDirectory : teacherDirectoryList) {
+			// 创建并添加teacherMap的key,value值
+			String teacherName = teacherDirectory.getName();// 得到老师名字
+			List isCheckedDirectoryList = new ArrayList();// 创建储存[已通过]和[待审核]的list
+			teacherMap.put(teacherName, isCheckedDirectoryList);
+			List checkedFileList = new ArrayList();// 创建储存所有已通过文件名的list
+			List unCheckedFileList = new ArrayList();// 创建储存所有待审核文件名的list
+			isCheckedDirectoryList.add(checkedFileList);
+			isCheckedDirectoryList.add(unCheckedFileList);
+
+			// 得到老师名字文件夹下的[已通过]和[待审核]文件夹
+			File[] isCheckedDirectory = teacherDirectory.listFiles();
+			// 遍历[已通过]和[待审核]以外的文件夹
+			for (File isChecked : isCheckedDirectory) {
+				if (isChecked.getName().equals("已通过")) {
+					// 得到所有已通过的文件
+					File[] checkedFiles = isChecked.listFiles();
+					// 遍历所有已通过的文件
+					for (File checkedFile : checkedFiles) {
+						// 将文件名放入checkedFileList
+						checkedFileList.add(checkedFile.getName());
+					}
+				} else if (isChecked.getName().equals("待审核")) {
+					// 得到所有待审核的文件
+					File[] unCheckedFiles = isChecked.listFiles();
+					// 遍历所有待审核的文件
+					for (File unCheckedFile : unCheckedFiles) {
+						// 将文件名放入unCheckedFileList
+						unCheckedFileList.add(unCheckedFile.getName());
+					}
+				} else {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+}

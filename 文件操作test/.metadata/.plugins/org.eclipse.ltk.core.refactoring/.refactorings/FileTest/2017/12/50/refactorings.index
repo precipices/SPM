@@ -1,0 +1,22 @@
+1512885980897	Copy compilation unit
+1512898529260	Move 'NewFile.jsp' to 'upload'
+1512898592059	Delete element
+1512899268389	Move 'upload.jsp' to 'jspforupload'
+1512899633054	Rename resource 'jspforupload'
+1512899963465	Move 'upload.jsp' to 'WebContent'
+1512902775541	Move 'upload.jsp' to 'jspForUpload'
+1512904833683	Move 'message.jsp' to 'WebContent'
+1512905170645	Move 'message.jsp' to 'jspForUpload'
+1512959813922	Rename resource 'upload.jsp'
+1512960903147	Delete element
+1512997522723	Delete element
+1512997536593	Rename type 'UploadServlet2'
+1512998263983	Copy compilation unit
+1512998338376	Delete element
+1512999286329	Delete element
+1512999919088	Delete element
+1513046948076	Delete element
+1513046962825	Delete element
+1513047195931	Rename resource 'agreeUpload.jsp'
+1513047282571	Delete element
+1513051665203	Rename resource 'uploadAgree.jsp'

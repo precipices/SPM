@@ -1,0 +1,316 @@
+@CHARSET "UTF-8";
+body{
+	background:url(../img/index/banner-bg.jpg) repeat-x #E7E4DE top;
+}
+body{
+	font-size:12px;
+	color:#333;
+	font-family:"微软雅黑";
+}
+body,ul{
+	margin:0;
+}
+ul{
+	padding:0;
+	list-style-type:none;
+}
+a{
+	color:#333;
+	text-decoration:none;
+}
+a:hover{
+	cursor:pointer;
+}
+
+.clearBoth{
+	clear:both;
+}
+
+.topArea{
+	height:166px;
+	margin:auto;
+}
+.top{
+	width:1000px;
+	margin:0 auto;
+	background:url(../img/index/banner.jpg) no-repeat;
+	height:166px;
+}
+.logo{
+	float:left;
+	width:40%;
+	height:129px;
+	background:url(../img/index/logo.png) no-repeat center;
+	overflow:hidden;
+}
+.toolPanel{
+	float:right;
+	width:60%;
+	height:129px;
+	overflow:hidden;
+}
+.toolPanel .loginArea{
+	float:left;
+	width:100%;
+	height:53px;
+	overflow:hidden;
+	padding-top:46px;
+	padding-bottom:30px;
+}
+.toolPanel .loginArea a{
+	font-family:"microsoft yahei";
+	margin:10px;
+	font-size:14px;
+	color:#F1F1F1;
+}
+.toolPanel .loginArea a#studentLogin{
+	border-bottom:2px solid #F0780A;
+	padding-bottom:16px;
+}
+.toolPanel .loginArea a#studentLogin:hover{
+	border-bottom:6px solid #F0780A; 
+	padding-bottom:14px;
+}
+.toolPanel .loginArea a#teacherLogin{
+	border-bottom:2px solid #FAE606;
+	padding-bottom:16px;
+}
+.toolPanel .loginArea a#teacherLogin:hover{
+	border-bottom:6px solid #FAE606;
+	padding-bottom:14px;
+}
+.toolPanel .loginArea a#adminLogin{
+	border-bottom:2px solid #64A35D;
+	padding-bottom:16px;
+}
+.toolPanel .loginArea a#adminLogin:hover{
+	border-bottom:6px solid #64A35D;
+	padding-bottom:14px;
+}
+
+.nav{
+	width:1000px;
+	height:41px;
+	position:relative;
+	z-index:1000;
+}
+.nav ul li{
+	float:left;
+	background:url(../img/index/banner_19.png) no-repeat right 3px;
+	width:166px;
+}
+.nav ul li a{
+	color:#FFF;
+	font-size:14px;
+	line-height:35px;
+	font-family:"微软雅黑";
+}
+.nav ul li a:hover{
+	color:#0FF;
+}
+
+.mainBox{
+	height:500px;
+}
+.mainBoxArea{
+	margin:0 auto;
+	width:1000px;
+	padding:20px 20px 0 20px;
+}
+.module{
+	width:1000px;
+	height:220px;
+}
+.title{
+	border-bottom:2px solid #075190;
+	height:18px;
+}
+.title a{
+	font-family:"微软雅黑";
+	font-size:14px;
+	font-weight:bold;
+}
+.articleTitle{
+	border-bottom:2px solid #075190;
+	height:50px;
+	text-align:center;
+}
+.articleTitle h1{
+	font-family:"微软雅黑";
+	font-size:30px;
+	font-weight:bold;
+}
+.time{
+	text-align:center;
+	font-size:10px;
+}
+
+.newsListStyle{
+	border-bottom:1px dotted #D3D2CE;
+	text-align:left;
+	line-height:26px;
+}
+
+.tableList{
+	border:solid 1px #CBCBCB;
+	width:50%;
+	clear:both;
+}
+.tableList th{
+	background:url(../img/take/th.gif) repeat-x;
+	height:34px;
+	line-height:34px;
+	border-bottom:solid 1px #B6CAD2;
+	text-indent:11px;
+	text-align:left;
+}
+.tableList td{
+	line-height:35px;
+	text-indent:11px;
+	border-right:dotted 1px #C7C7C7;
+}
+.tableLink{
+	color:#056DAE;
+}
+.tableList tbody tr.odd{
+	background:#F5F8FA;
+}
+.tableList tbody tr:hover{
+	background:#E5EBEE;
+}
+
+.tabson{
+	margin:18px 0;
+}
+.itab{
+	height:36px;
+	border-bottom:solid 1px #d0dee5;
+	position:relative;
+	border-left:solid 1px #d3dbde;
+}
+.itab ul li{
+	float:left;
+	height:37px;
+	line-height:37px;
+	background:url(../img/take/itabbg1.png) repeat-x;
+	border-right:solid 1px #d3dbde;
+}
+.itab ul li a{
+	font-size:14px;
+	color:#000;
+	padding-left:25px;
+	padding-right:25px;
+}
+.itab ul li a.selected{
+	height:37px;
+	display:block;
+	background:url(../img/take/itabbg2.png) repeat-x;
+	font-weight:bold;
+}
+
+/*form*/
+.formBody{
+	padding:10px 18px;
+}
+.formInfo{
+	padding-left:23px;
+}
+.formInfo li{
+	margin-bottom:13px;
+	clear:both;
+}
+.formInfo li label{
+	width:86px;
+	line-height:34px;
+	display:block;
+	float:left;
+}
+.btn{
+	width:137px;
+	height:35px;
+	background:url(../img/select/btnbg.png) no-repeat;
+	font-size:14px;
+	font-weight:bold;
+	color:#FFF;
+	cursor:pointer;
+}
+
+/*select*/
+.uew-select .uew-select-value{
+	height:32px;
+	padding:0 5px;
+	margin-top:0px;
+	margin-bottom:12px;
+	line-height:32px;
+	font-family:Tahoma,'微软雅黑','宋体';
+	color:#000;
+	resize:none;
+	border-width:1px;
+	border-style:solid;
+	border-color:#A7B5BC #CED9DF #CED9DF #A7B5BC;
+}
+.uew-border-flag,
+.uew-border-flag,
+textarea.uew-border-flag,
+.uew-select .uew-select-value.uew-border-flag{
+	border-width:1px;
+	border-style:solid;
+	border-color:#BABABA #E9E9E9 #E9E9E9 #BABABA;
+}
+.uew-select{
+	position:relative;
+}
+.uew-select .uew-select-value{
+	z-index:1;
+	position:relative;
+	padding-right:20px;
+	background:#FFF;
+	font-size:12px;
+	text-indent:5px;
+	background:url(../img/select/inputbg.gif) repeat-x;
+}
+.uew-select-value em{
+	font-style:normal;
+}
+.uew-select .uew-icon{
+	position:absolute;
+	right:5px;
+	top:10px;
+}
+.uew-select select{
+	z-index:2;
+	position:absolute;
+	top:3px;
+	cursor:pointer;
+	height:28px;
+}
+a:focus,
+input[type=checkbox]:focus,
+input[type=radio]:focus,
+button:focus,
+select{
+	outline:none;
+}
+select{
+	opacity:0;
+	filter:alpha(opacity=0);
+}
+option{
+	overflow:auto;
+}
+.uew-icon,
+.ue-state-default .uew-icon{
+	display:inline-block;
+	width:16px;
+	height:16px;
+	background-image:url(../img/select/uew_icon.png);
+}
+.ue-state-hover .uew-icon{
+	background-image:url(../img/select/uew_icon_hover.png);
+}
+.uew-icon-triangle-1-s{
+	background-position:-80px 0;
+}
+.vocation{
+	float:left;
+}
